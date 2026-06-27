@@ -70,6 +70,7 @@ public:
         AddGossipItemFor(player, GOSSIP_ICON_TRAINER, GetGuildHouseLocaleText(GUILDHOUSE_TEXT_GOSSIP_SPAWN_PRIMARY_PROF, player), GOSSIP_SENDER_MAIN, 7);
         AddGossipItemFor(player, GOSSIP_ICON_TRAINER, GetGuildHouseLocaleText(GUILDHOUSE_TEXT_GOSSIP_SPAWN_SECONDARY_PROF, player), GOSSIP_SENDER_MAIN, 8);
         AddGossipItemFor(player, GOSSIP_ICON_TALK, GetGuildHouseLocaleText(GUILDHOUSE_TEXT_GOSSIP_SPAWN_SPIRIT_HEALER, player), GOSSIP_SENDER_MAIN, 6491, GetGuildHouseLocaleText(GUILDHOUSE_TEXT_CONFIRM_SPAWN_SPIRIT_HEALER, player), GuildHouseSpirit, false);
+        AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Summon the Madam", GOSSIP_SENDER_MAIN, 700050, "The Madam does not come cheap. Summon her for 5000g?", 50000000, false);
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
         return true;
     }
@@ -189,6 +190,10 @@ public:
             break;
         case 30605: // Banker
             cost = GuildHouseBank;
+            SpawnNPC(action, player);
+            break;
+        case 700050: // Raptor Isle: the Madam (premium 5000g)
+            cost = 50000000;
             SpawnNPC(action, player);
             break;
         case GetCreatureEntry(2): // Innkeeper
